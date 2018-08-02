@@ -41,6 +41,11 @@ app.use('/api/scan', scanRouter);
 // Serve static files
 app.use(express.static('build'));
 
+// Get build for heroku deployment 
+app.get('/*', (req, res) => {
+  res.sendFile('/app/build/index.html');
+});
+
 // App Set //
 const PORT = process.env.PORT || 5000;
 
